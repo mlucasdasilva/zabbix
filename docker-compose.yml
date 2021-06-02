@@ -416,8 +416,6 @@ services:
 #   - --ssl-key=/run/secrets/server-key.pem
   volumes:
    - ./zbx_env/var/lib/mysql:/var/lib/mysql:rw
-  ports:
-    - 3306:3306
   env_file:
    - .env_db_mysql
   secrets:
@@ -435,6 +433,9 @@ services:
      - zabbix-database
      - mysql-database
      - db
+   zbx_net_frontend:
+  ports:
+    - 3306:3306
 
  db_data_mysql:
   image: busybox
